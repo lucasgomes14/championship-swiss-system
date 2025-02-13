@@ -1,5 +1,6 @@
 package com.championship.swiss_system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +10,11 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_technicalCommittee")
+@Table(name = "tb_technical_committee")
 public class TechnicalCommittee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String name;
@@ -21,7 +22,12 @@ public class TechnicalCommittee {
     private Integer age;
 
     @Enumerated(EnumType.STRING)
-    private Function function;
+    private FunctionTechnical functionTechnical;
 
-    private Byte[] photo;
+    private byte[] photo;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    @JsonIgnore
+    private Team team;
 }

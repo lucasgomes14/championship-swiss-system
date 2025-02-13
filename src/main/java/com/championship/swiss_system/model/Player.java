@@ -1,5 +1,6 @@
 package com.championship.swiss_system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import java.util.UUID;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String name;
@@ -24,7 +25,13 @@ public class Player {
 
     private Integer weight;
 
-    private String position;
+    @Enumerated(EnumType.STRING)
+    private Position position;
 
-    private Byte[] photo;
+    private byte[] photo;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
+    @JsonIgnore
+    private Team team;
 }

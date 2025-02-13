@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,16 +15,20 @@ import java.util.UUID;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(unique = true, nullable = false)
     private String name;
 
-    private List<Player> players;
+    @Column(nullable = false)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Player> players = new ArrayList<>();
 
-    private List<TechnicalCommittee> technicalCommittee;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TechnicalCommittee> technicalCommittee =  new ArrayList<>();
 
-    private Byte[] logoImage;
+    private byte[] logoImage;
 
     private Integer victories;
 
