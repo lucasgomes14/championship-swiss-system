@@ -12,18 +12,18 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "tb_match")
-public class Match {
+public class MatchModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_1_name", referencedColumnName = "name", nullable = false)
-    private Team team1;
+    private TeamModel teamModel1;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_2_name", referencedColumnName = "name", nullable = false)
-    private Team team2;
+    private TeamModel teamModel2;
 
     private LocalDateTime startDateTime;
 
@@ -35,14 +35,14 @@ public class Match {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_winner_name", referencedColumnName = "name")
-    private Team winner;
+    private TeamModel winner;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_defeat_name", referencedColumnName = "name")
-    private Team defeat;
+    private TeamModel defeat;
 
     @ManyToOne
     @JoinColumn(name = "championship_id")
     @JsonIgnore
-    private Championship championship;
+    private ChampionshipModel championshipModel;
 }

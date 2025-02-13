@@ -10,8 +10,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_player")
-public class Player {
+@Table(name = "tb_technical_committee")
+public class TechnicalCommitteeModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,17 +21,13 @@ public class Player {
 
     private Integer age;
 
-    private Integer height;
-
-    private Integer weight;
-
     @Enumerated(EnumType.STRING)
-    private Position position;
+    private FunctionTechnical functionTechnical;
 
     private byte[] photo;
 
     @ManyToOne
     @JoinColumn(name = "team_id", nullable = false)
     @JsonIgnore
-    private Team team;
+    private TeamModel teamModel;
 }

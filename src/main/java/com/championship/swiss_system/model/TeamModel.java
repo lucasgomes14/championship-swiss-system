@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "tb_team")
-public class Team {
+public class TeamModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +23,10 @@ public class Team {
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Player> players = new ArrayList<>();
+    private List<PlayerModel> playerModels = new ArrayList<>();
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TechnicalCommittee> technicalCommittee =  new ArrayList<>();
+    private List<TechnicalCommitteeModel> technicalCommitteeModel =  new ArrayList<>();
 
     private byte[] logoImage;
 

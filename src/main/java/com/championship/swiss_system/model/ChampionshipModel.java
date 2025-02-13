@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "tb_championship")
-public class Championship {
+public class ChampionshipModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +24,5 @@ public class Championship {
     private LocalDate date;
 
     @OneToMany(mappedBy = "championship", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Match> matches = new ArrayList<>();
+    private List<MatchModel> matchModels = new ArrayList<>();
 }
