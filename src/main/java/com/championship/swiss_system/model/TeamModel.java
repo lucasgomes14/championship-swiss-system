@@ -22,10 +22,10 @@ public class TeamModel {
     private String name;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "teamModel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PlayerModel> playerModels = new ArrayList<>();
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "teamModel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TechnicalCommitteeModel> technicalCommitteeModel =  new ArrayList<>();
 
     private byte[] logoImage;

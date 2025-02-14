@@ -23,6 +23,6 @@ public class ChampionshipModel {
 
     private LocalDate date;
 
-    @OneToMany(mappedBy = "championship", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "championshipModel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MatchModel> matchModels = new ArrayList<>();
 }
